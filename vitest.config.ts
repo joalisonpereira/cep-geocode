@@ -5,5 +5,8 @@ export default defineConfig({
     globals: true,
     environment: "node",
     setupFiles: "./setupTests.ts",
+    coverage: {
+      reporter: ["json-summary", "lcov", "text", "html"],
+    },
   },
 });

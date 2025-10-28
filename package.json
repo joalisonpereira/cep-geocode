@@ -27,8 +27,9 @@
     "dev": "tsx src/dev.ts",
     "build": "tsup lib/index.ts",
     "prepare": "husky",
+    "prepublishOnly": "npm run build",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage && jest-coverage-badges -o --output './docs'"
   },
   "keywords": [
     "cep",
@@ -53,7 +54,8 @@
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.2",
-    "vitest": "^4.0.4"
+    "vitest": "^4.0.4",
+    "jest-coverage-badges": "^1.1.2"
   },
   "dependencies": {
     "cep-promise": "^4.4.1",
