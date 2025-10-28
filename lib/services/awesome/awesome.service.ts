@@ -1,4 +1,5 @@
-import { BaseService } from "./base.service";
+import { injectable } from "tsyringe";
+import { BaseService } from "../../services/base/base.service";
 
 interface Response {
   cep: string;
@@ -14,6 +15,7 @@ interface Response {
   lng: string;
 }
 
+@injectable()
 export class AwesomeService extends BaseService<Response> {
   protected TEMPLATE_URL = "https://cep.awesomeapi.com.br/json/{{cep}}";
 

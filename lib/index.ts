@@ -1,14 +1,19 @@
+import "reflect-metadata";
+import type { Address } from "./services/base/base.service";
 import { AddressNotFoundException } from "./exceptions/address-not-found.exception";
-import { AwesomeService } from "./services/awesome.service";
-import type { Address } from "./services/base.service";
-import { NominatimService } from "./services/nominatim.service";
+import { AwesomeService } from "./services/awesome/awesome.service";
+import { NominatimService } from "./services/nominatim/nominatim.service";
 import cepPromise from "cep-promise";
+import { container } from "tsyringe";
 
 export async function cepGeocode<AllowEmptyLatLng extends boolean = false>(
   cep: string,
   config?: { acceptEmptyLatLng?: AllowEmptyLatLng }
 ): Promise<Address<AllowEmptyLatLng>> {
-  const services = [new NominatimService(), new AwesomeService()];
+  const services = [
+    container.resolve(NominatimService),
+    container.resolve(AwesomeService),
+  ];
 
   for (const service of services) {
     try {

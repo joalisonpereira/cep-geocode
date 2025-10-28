@@ -1,5 +1,6 @@
-import { InvalidResponseException } from "../exceptions/invalid-response.exception";
-import { BaseService } from "./base.service";
+import { injectable } from "tsyringe";
+import { InvalidResponseException } from "../../exceptions/invalid-response.exception";
+import { BaseService } from "../../services/base/base.service";
 import cepPromise from "cep-promise";
 
 interface Response {
@@ -17,6 +18,7 @@ interface Response {
   boundingbox: [string, string, string, string];
 }
 
+@injectable()
 export class NominatimService extends BaseService<Response[]> {
   protected TEMPLATE_URL =
     "https://nominatim.openstreetmap.org/search?postalcode={{cep}}&country=Brazil&format=json";
@@ -38,8 +40,8 @@ export class NominatimService extends BaseService<Response[]> {
       city: address.city,
       neighborhood: address.neighborhood,
       street: address.street,
-      lat: parseFloat(addressLocation.lat),
-      lng: parseFloat(addressLocation.lon),
+      lat: Number(addressLocation.lat),
+      lng: Number(addressLocation.lon),
     });
   }
 }
