@@ -41,7 +41,6 @@ export abstract class BaseService<T extends object> {
   protected result(data: Address): Address {
     KEYS.forEach((key) => {
       if (!data[key as keyof Address]) {
-        console.log("@@@", key);
         throw new KeyMissingException();
       }
     });
