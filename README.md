@@ -76,7 +76,7 @@ The library uses a smart fallback mechanism to ensure consistent results even if
 
 This ensures resilience against downtime from any single provider.
 
-🧰 Compatibility
+### 🧰 Compatibility
 
 | Environment | Supported |
 | ----------- | --------- |
