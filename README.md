@@ -42,7 +42,7 @@ async function run() {
 run();
 ```
 
-## Example Response
+## ✅ Example Response
 
 ```json
 {
