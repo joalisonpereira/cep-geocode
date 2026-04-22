@@ -42,9 +42,9 @@ describe("AwesomeService", () => {
 
     expect(result.street).toBe("Avenida Paulista");
 
-    expect(result.lat).toBe(-23.5613);
+    expect(result.coords.lat).toBe(-23.5613);
 
-    expect(result.lng).toBe(-46.6565);
+    expect(result.coords.lng).toBe(-46.6565);
 
     expect(mockFetch).toHaveBeenCalledTimes(1);
   });

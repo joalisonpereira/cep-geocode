@@ -1,6 +1,6 @@
 {
   "name": "cep-geocode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Get Brazilian address and coordinates (lat/lng) from a CEP with automatic provider fallback",
   "license": "MIT",
   "type": "module",

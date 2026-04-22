@@ -51,20 +51,22 @@ run();
   "city": "Recife",
   "neighborhood": "Bairro do Recife",
   "street": "Rua do Bom Jesus",
-  "lat": -8.06317,
-  "lng": -34.87114
+  "coords": {
+    "lat": -8.06317,
+    "lng": -34.87114
+  }
 }
 ```
 
 ### ⚙️ Options
 
 ```ts
-const data = await cepGeocode("50030310", { acceptEmptyLatLng: true });
+const data = await cepGeocode("50030310", { acceptEmptyCoords: true });
 ```
 
 | Option              | Type      | Default | Description                                                                                                                        |
 | ------------------- | --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `acceptEmptyLatLng` | `boolean` | `false` | When `true`, returns address data even if `lat` and `lng` could not be obtained. Useful when the CEP is valid but geocoding fails. |
+| `acceptEmptyCoords` | `boolean` | `false` | When `true`, returns address data even if `lat` and `lng` could not be obtained. Useful when the CEP is valid but geocoding fails. |
 
 ### 🧠 Fallback Strategy
 

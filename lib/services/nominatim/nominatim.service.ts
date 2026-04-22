@@ -40,8 +40,10 @@ export class NominatimService extends BaseService<Response[]> {
       city: address.city,
       neighborhood: address.neighborhood,
       street: address.street,
-      lat: Number(addressLocation.lat),
-      lng: Number(addressLocation.lon),
+      coords: {
+        lat: Number(addressLocation.lat),
+        lng: Number(addressLocation.lon),
+      },
     });
   }
 }

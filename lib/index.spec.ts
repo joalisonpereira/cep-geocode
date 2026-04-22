@@ -15,8 +15,10 @@ function getMockAddress(): Address {
     city: "São Paulo",
     neighborhood: "Bela Vista",
     street: "Avenida Paulista",
-    lat: -23.5613,
-    lng: -46.6565,
+    coords: {
+      lat: -23.5613,
+      lng: -46.6565,
+    },
   };
 }
 
@@ -52,8 +54,10 @@ describe("cepGeocode", () => {
       city: "São Paulo",
       neighborhood: "Bela Vista",
       street: "Avenida Paulista",
-      lat: -23.5613,
-      lng: -46.6565,
+      coords: {
+        lat: -23.5613,
+        lng: -46.6565,
+      },
     });
   });
 
@@ -73,8 +77,10 @@ describe("cepGeocode", () => {
       city: "São Paulo",
       neighborhood: "Bela Vista",
       street: "Avenida Paulista",
-      lat: -23.5613,
-      lng: -46.6565,
+      coords: {
+        lat: -23.5613,
+        lng: -46.6565,
+      },
     });
   });
 
@@ -88,11 +94,11 @@ describe("cepGeocode", () => {
     });
 
     await expect(cepGeocode("01310100")).rejects.toThrow(
-      AddressNotFoundException
+      AddressNotFoundException,
     );
   });
 
-  it("should return address with null lat/lng when acceptEmptyLatLng is true", async () => {
+  it("should return address with null coords when acceptEmptyCoords is true", async () => {
     container.registerInstance<Partial<AwesomeService>>(AwesomeService, {
       execute: vi.fn().mockRejectedValue(new Error("Service not available")),
     });
@@ -102,7 +108,7 @@ describe("cepGeocode", () => {
     });
 
     const result = await cepGeocode("01310100", {
-      acceptEmptyLatLng: true,
+      acceptEmptyCoords: true,
     });
 
     expect(result).toEqual({
@@ -111,8 +117,7 @@ describe("cepGeocode", () => {
       city: "São Paulo",
       neighborhood: "Bela Vista",
       street: "Avenida Paulista",
-      lat: null,
-      lng: null,
+      coords: null,
     });
   });
 
@@ -124,8 +129,10 @@ describe("cepGeocode", () => {
         city: "São Paulo",
         // neighborhood is missing
         street: "Avenida Paulista",
-        lat: -23.5613,
-        lng: -46.6565,
+        coords: {
+          lat: -23.5613,
+          lng: -46.6565,
+        },
       }),
     });
 

@@ -28,8 +28,10 @@ export class AwesomeService extends BaseService<Response> {
       city: data.city,
       neighborhood: data.district,
       street: data.address,
-      lat: Number(data.lat),
-      lng: Number(data.lng),
+      coords: {
+        lat: Number(data.lat),
+        lng: Number(data.lng),
+      },
     });
   }
 }
